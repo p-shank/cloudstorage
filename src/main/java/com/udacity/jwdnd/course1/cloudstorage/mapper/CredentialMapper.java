@@ -12,12 +12,6 @@ import com.udacity.jwdnd.course1.cloudstorage.model.Credentials;
 
 @Mapper
 public interface CredentialMapper {
-	
-	@Select("select * from CREDENTIALS")
-    List<Credentials> getAllCreds();
-
-    @Select("select * from CREDENTIALS where credid = #{credId}")
-    public Credentials getByCredId(int credId);
 
     @Select("select * from CREDENTIALS where userid = #{userId}")
     public List<Credentials> getByUserId(int userId);
