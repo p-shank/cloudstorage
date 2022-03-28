@@ -80,8 +80,8 @@
                                             <button name = "edit" th:onclick="javascript:showNoteModal([[${note}]])" type="button" class="btn btn-success">Edit</button>
                                             <a name = "delete" th:href="@{/notes/delete(noteId=${note.noteId})}" class="btn btn-danger">Delete</a>
                                         </td>
-                                        <th scope="row" th:text="${note.noteTitle}"></th>
-                                        <td th:text="${note.noteDescription}"></td>
+                                        <th id="note_title" scope="row" th:text="${note.noteTitle}"></th>
+                                        <td id="note_desc" th:text="${note.noteDescription}"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -140,9 +140,9 @@
                                         th:onclick="javascript:showCredentialModal([[${credential}]],[[${credential.decryptedPass}]])" type="button" class="btn btn-success">Edit</button>
                                         <a name="delete" th:href="@{/credentials/delete(credId=${credential.credId})}" class="btn btn-danger">Delete</a>
                                     </td>
-                                    <th scope="row" th:text="${credential.url}"></th>
-                                    <td th:text="${credential.username}"></td>
-                                    <td th:text="${credential.password}"></td>
+                                    <th id = "cred_url" scope="row" th:text="${credential.url}"></th>
+                                    <td id = "cred_name" th:text="${credential.username}"></td>
+                                    <td id = "cred_pass" th:text="${credential.password}"></td>
                                 </tr>
                                 </tbody>
                             </table>
