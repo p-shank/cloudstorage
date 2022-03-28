@@ -13,12 +13,6 @@ import com.udacity.jwdnd.course1.cloudstorage.model.Notes;
 @Mapper
 public interface NoteMapper {
 
-    @Select("select * from NOTES")
-    List<Notes> getAllNotes();
-
-    @Select("select * from NOTES where noteid = #{noteId}")
-    public Notes getNoteById(int noteId);
-
     @Select("select * from NOTES where userid = #{userId}")
     public List<Notes> getByUserId(int userId);
 

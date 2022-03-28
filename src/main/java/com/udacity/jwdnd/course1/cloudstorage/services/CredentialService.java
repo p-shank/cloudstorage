@@ -1,9 +1,6 @@
 package com.udacity.jwdnd.course1.cloudstorage.services;
 
 import java.util.List;
-import java.util.Random;
-import java.util.random.RandomGeneratorFactory;
-import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +29,7 @@ public class CredentialService {
         return credential;
     }
 
-    public List<Credentials> getCredList(int userId) throws Exception {
+    public List<Credentials> getCredList(int userId) {
         List<Credentials> credentials = credentialsMapper.getByUserId(userId);
         for ( Credentials cred: credentials) {
         	decryptPass(cred);
