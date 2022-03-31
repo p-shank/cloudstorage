@@ -40,6 +40,7 @@ public class FileController {
     		filesService.uploadFile(fileUpload, user.getUserId());
     		return "success";
     	} catch (Exception exception ) {
+    		System.out.print(exception);
         	return "error";
         }
     }

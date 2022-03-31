@@ -6,6 +6,7 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,14 +46,21 @@ public class FileService {
         fileMapper.deleteFile(fileid);
     }
     
-    public void uploadFile(MultipartFile fileUpload, int userId) throws IOException {
+    public void uploadFile(MultipartFile fileUpload, int userId) throws Exception {
         Files file = new Files();
         try {
+        	
+        	String fileNamePresent = fileMapper.getFileByName(fileUpload.getOriginalFilename(),userId);
+        	
+        	if (StringUtils.isNotBlank(fileNamePresent)) {
+        		throw new Exception();
+        	}
+        	
             file.setContentType(fileUpload.getContentType());
             file.setFileData(fileUpload.getBytes());
             file.setFileName(fileUpload.getOriginalFilename());
             file.setFileSize(Long.toString(fileUpload.getSize()));
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw e;
         }
         fileMapper.insertFile(file, userId);
